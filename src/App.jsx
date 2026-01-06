@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, createContext, useContext } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 // Theme Context
 const ThemeContext = createContext();
@@ -877,6 +878,8 @@ const CareersPage = () => {
 
 const ContactPage = ({ setCurrentPage }) => {
   const { isDark } = useTheme();
+  const [state, handleSubmit] = useForm("xnjnkkaw");
+  
   const offices = [
     { city: 'Bangalore', country: 'India', addr: '441, 9th Main, AECS B Block, Singasandra, Bangalore - 560068', flag: '🇮🇳' },
     { city: 'Göteborg', country: 'Sweden', addr: 'Herkulesgatan 3A, 417 03 Göteborg, Sweden', flag: '🇸🇪' },
@@ -920,33 +923,88 @@ const ContactPage = ({ setCurrentPage }) => {
 
           <div>
             <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Send a Message</h2>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              {[
-                { label: 'Full Name', type: 'text', placeholder: 'John Doe' },
-                { label: 'Email', type: 'email', placeholder: 'john@company.com' },
-                { label: 'Company', type: 'text', placeholder: 'Your Company' }
-              ].map((field, i) => (
-                <div key={i} className="relative">
+            
+            {state.succeeded ? (
+              <GlassCard className="text-center py-12">
+                <div className="text-5xl mb-4">✅</div>
+                <h3 className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Message Sent!</h3>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-6`}>Thank you for reaching out. We'll get back to you shortly.</p>
+                <button 
+                  onClick={() => window.location.reload()} 
+                  className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold rounded-xl hover:-translate-y-0.5 transition-all"
+                >
+                  Send Another Message
+                </button>
+              </GlassCard>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="relative">
                   <input 
-                    type={field.type} 
-                    placeholder={field.placeholder}
+                    id="name"
+                    type="text" 
+                    name="name"
+                    required
+                    placeholder="John Doe"
                     className={`w-full px-4 py-4 ${isDark ? 'bg-white/[0.03] border-white/[0.08] text-white placeholder-white/30' : 'bg-black/[0.03] border-black/[0.08] text-gray-900 placeholder-black/30'} border rounded-xl focus:outline-none focus:border-orange-500 transition-all`}
                   />
-                  <label className={`absolute -top-2.5 left-3 px-1 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'} text-xs text-orange-500`}>{field.label}</label>
+                  <label htmlFor="name" className={`absolute -top-2.5 left-3 px-1 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'} text-xs text-orange-500`}>Full Name</label>
+                  <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-sm mt-1" />
                 </div>
-              ))}
-              <div className="relative">
-                <textarea 
-                  rows="4" 
-                  placeholder="Tell us about your project..."
-                  className={`w-full px-4 py-4 ${isDark ? 'bg-white/[0.03] border-white/[0.08] text-white placeholder-white/30' : 'bg-black/[0.03] border-black/[0.08] text-gray-900 placeholder-black/30'} border rounded-xl focus:outline-none focus:border-orange-500 transition-all resize-none`}
-                ></textarea>
-                <label className={`absolute -top-2.5 left-3 px-1 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'} text-xs text-orange-500`}>Message</label>
-              </div>
-              <button type="submit" className="w-full py-4 bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/25 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/40 transition-all">
-                Send Message
-              </button>
-            </form>
+                
+                <div className="relative">
+                  <input 
+                    id="email"
+                    type="email" 
+                    name="email"
+                    required
+                    placeholder="john@company.com"
+                    className={`w-full px-4 py-4 ${isDark ? 'bg-white/[0.03] border-white/[0.08] text-white placeholder-white/30' : 'bg-black/[0.03] border-black/[0.08] text-gray-900 placeholder-black/30'} border rounded-xl focus:outline-none focus:border-orange-500 transition-all`}
+                  />
+                  <label htmlFor="email" className={`absolute -top-2.5 left-3 px-1 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'} text-xs text-orange-500`}>Email</label>
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-sm mt-1" />
+                </div>
+                
+                <div className="relative">
+                  <input 
+                    id="company"
+                    type="text" 
+                    name="company"
+                    placeholder="Your Company"
+                    className={`w-full px-4 py-4 ${isDark ? 'bg-white/[0.03] border-white/[0.08] text-white placeholder-white/30' : 'bg-black/[0.03] border-black/[0.08] text-gray-900 placeholder-black/30'} border rounded-xl focus:outline-none focus:border-orange-500 transition-all`}
+                  />
+                  <label htmlFor="company" className={`absolute -top-2.5 left-3 px-1 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'} text-xs text-orange-500`}>Company</label>
+                </div>
+                
+                <div className="relative">
+                  <textarea 
+                    id="message"
+                    name="message"
+                    rows="4" 
+                    required
+                    placeholder="Tell us about your project..."
+                    className={`w-full px-4 py-4 ${isDark ? 'bg-white/[0.03] border-white/[0.08] text-white placeholder-white/30' : 'bg-black/[0.03] border-black/[0.08] text-gray-900 placeholder-black/30'} border rounded-xl focus:outline-none focus:border-orange-500 transition-all resize-none`}
+                  ></textarea>
+                  <label htmlFor="message" className={`absolute -top-2.5 left-3 px-1 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'} text-xs text-orange-500`}>Message</label>
+                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
+                </div>
+                
+                <button 
+                  type="submit" 
+                  disabled={state.submitting}
+                  className={`w-full py-4 bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold rounded-xl shadow-lg shadow-orange-500/25 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-500/40 transition-all ${state.submitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                >
+                  {state.submitting ? (
+                    <span className="inline-flex items-center gap-2">
+                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </span>
+                  ) : 'Send Message'}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
