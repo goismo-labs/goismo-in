@@ -88,9 +88,9 @@ const Navigation = ({ currentPage, setCurrentPage, scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Us' },
-    { id: 'portfolio', label: 'Portfolio' },
+    { id: 'services', label: 'Services' },
     { id: 'products', label: 'Products' },
+    { id: 'portfolio', label: 'Portfolio' },
     { id: 'team', label: 'Team' },
     { id: 'careers', label: 'Careers' },
     { id: 'contact', label: 'Contact' }
@@ -171,7 +171,7 @@ const HeroSection = ({ setCurrentPage }) => {
         </h1>
         
         <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed max-w-2xl mx-auto mb-10 animate-fadeInUp`} style={{animationDelay: '0.4s'}}>
-          Enterprise solutions powered by innovation. We architect secure, scalable, and intelligent systems across Fintech, Education, and Security domains.
+          Enterprise solutions powered by innovation. We architect secure, scalable systems across Fintech, Education, and Cybersecurity—including 24/7 SOC and VSOC services.
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap animate-fadeInUp" style={{animationDelay: '0.6s'}}>
@@ -240,7 +240,7 @@ const PillarsSection = () => {
   );
 };
 
-const AboutPage = () => {
+const AboutSection = () => {
   const { isDark } = useTheme();
   const timeline = [
     { year: '2019', title: 'Founded', desc: 'Started in Bangalore with a vision for excellence' },
@@ -249,7 +249,7 @@ const AboutPage = () => {
     { year: '2022', title: 'Sweden Office', desc: 'Opened Göteborg development center' },
     { year: '2023', title: 'Security Guard App', desc: 'Launched flagship workforce platform' },
     { year: '2024', title: 'US Expansion', desc: 'Established Oakland headquarters' },
-    { year: '2025', title: 'AI Integration', desc: 'Pioneering AI-powered solutions' }
+    { year: '2025', title: 'SOC & VSOC Launch', desc: 'Security Operations Centre services' }
   ];
 
   const cyberCakeLayers = [
@@ -260,18 +260,18 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="pt-20">
-      <section className={`py-20 px-6 text-center bg-gradient-to-b ${isDark ? 'from-[#141414] to-[#0D0D0D]' : 'from-gray-100 to-white'}`}>
-        <span className="inline-block px-4 py-1.5 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-500 uppercase tracking-widest mb-4">About Us</span>
-        <h1 className={`text-5xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Our <ShinyText>Story</ShinyText></h1>
-        <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'} max-w-2xl mx-auto`}>From a small Bangalore startup to a global technology partner.</p>
-      </section>
-
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <section className={`py-24 px-6 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'}`}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-500 uppercase tracking-widest mb-4">About Goismo</span>
+          <h2 className={`text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Our <ShinyText>Story</ShinyText></h2>
+          <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'} max-w-2xl mx-auto`}>From a Bangalore startup to a global technology partner.</p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>The Cyber Cake Security Model</h2>
-            <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-6`}>Security isn't a single layer—it's a carefully crafted stack. Like a perfectly baked cake, each layer serves a purpose, and together they create something greater than the sum of parts.</p>
+            <h3 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>The Cyber Cake Security Model</h3>
+            <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-6`}>Security isn't a single layer—it's a carefully crafted stack. Like a perfectly baked cake, each layer serves a purpose.</p>
             <div className="space-y-3">
               {cyberCakeLayers.map((layer, i) => (
                 <div key={i} className={`p-4 rounded-xl bg-gradient-to-r ${layer.color} transform hover:scale-[1.02] transition-all cursor-default`}>
@@ -283,10 +283,10 @@ const AboutPage = () => {
           </div>
           
           <div>
-            <h2 className={`text-3xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Our Journey</h2>
+            <h3 className={`text-2xl font-bold mb-8 ${isDark ? 'text-white' : 'text-gray-900'}`}>Our Journey</h3>
             <div className="space-y-0">
               {timeline.map((item, i) => (
-                <div key={i} className={`relative pl-8 pb-8 border-l-2 ${isDark ? 'border-white/10' : 'border-black/10'} last:border-l-0`}>
+                <div key={i} className={`relative pl-8 pb-6 border-l-2 ${isDark ? 'border-white/10' : 'border-black/10'} last:border-l-0`}>
                   <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-orange-500 shadow-lg shadow-orange-500/50"></div>
                   <span className="text-orange-500 font-mono text-sm">{item.year}</span>
                   <h4 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{item.title}</h4>
@@ -294,6 +294,297 @@ const AboutPage = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ServicesPreview = ({ setCurrentPage }) => {
+  const { isDark } = useTheme();
+  const services = [
+    {
+      icon: '🛡️',
+      title: 'Security Operations Centre',
+      subtitle: 'SOC as a Service',
+      desc: 'Comprehensive 24/7 threat monitoring with MXDR and Managed SIEM capabilities powered by Microsoft security stack.',
+      features: ['24/7 Monitoring', 'MXDR', 'Managed SIEM', 'Incident Response']
+    },
+    {
+      icon: '🚗',
+      title: 'Vehicle Security Operations',
+      subtitle: 'VSOC for Automotive',
+      desc: 'Specialized cybersecurity for connected vehicles with compliance support for UNECE R155 and ISO/SAE 21434.',
+      features: ['Fleet Monitoring', 'OTA Security', 'Threat Intelligence', 'Compliance Support']
+    }
+  ];
+
+  return (
+    <section className={`py-24 px-6 ${isDark ? 'bg-[#141414]' : 'bg-gray-50'}`}>
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-500 uppercase tracking-widest mb-4">Our Services</span>
+          <h2 className={`text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Cyber Defense <ShinyText>Solutions</ShinyText></h2>
+          <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'} max-w-2xl mx-auto`}>Enterprise-grade security operations for IT and automotive ecosystems.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {services.map((service, i) => {
+            const [ref, isVisible] = useScrollReveal(0.1);
+            return (
+              <GlassCard key={i} className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                <div ref={ref}>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="text-4xl">{service.icon}</span>
+                    <div>
+                      <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{service.title}</h3>
+                      <span className="text-sm text-orange-500">{service.subtitle}</span>
+                    </div>
+                  </div>
+                  <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-6`}>{service.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {service.features.map((f, j) => (
+                      <span key={j} className={`px-3 py-1 ${isDark ? 'bg-white/[0.05] text-gray-400' : 'bg-black/[0.05] text-gray-600'} rounded-lg text-xs`}>{f}</span>
+                    ))}
+                  </div>
+                </div>
+              </GlassCard>
+            );
+          })}
+        </div>
+
+        <div className="text-center">
+          <button onClick={() => setCurrentPage('services')} className="inline-flex items-center gap-3 px-7 py-4 rounded-xl font-semibold bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-lg shadow-orange-500/40 hover:-translate-y-0.5 hover:shadow-xl transition-all">
+            Explore All Services
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TrustIndicators = () => {
+  const { isDark } = useTheme();
+  const indicators = [
+    { icon: '🏆', label: 'ISO 27001', desc: 'Certified' },
+    { icon: '✅', label: 'SOC 2 Type II', desc: 'Compliant' },
+    { icon: '🇪🇺', label: 'GDPR', desc: 'Compliant' },
+    { icon: '🔒', label: 'UNECE R155', desc: 'Aligned' },
+    { icon: '🛡️', label: 'Microsoft', desc: 'Partner' },
+    { icon: '⚡', label: '99.9%', desc: 'Uptime SLA' }
+  ];
+
+  return (
+    <section className={`py-16 px-6 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'} border-y ${isDark ? 'border-white/[0.08]' : 'border-black/[0.08]'}`}>
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+          {indicators.map((item, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl mb-2">{item.icon}</div>
+              <div className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{item.label}</div>
+              <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{item.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ServicesPage = () => {
+  const { isDark } = useTheme();
+
+  const socFeatures = [
+    { icon: '📡', title: 'Managed MXDR', desc: 'Extended Detection and Response across endpoints, identities, cloud workloads, and applications with automated threat containment.' },
+    { icon: '📊', title: 'Managed SIEM', desc: 'Centralised log collection, event correlation, and incident management with Microsoft Sentinel as the core platform.' },
+    { icon: '🔍', title: 'Threat Hunting', desc: 'Proactive threat hunting using MITRE ATT&CK framework and enriched threat intelligence.' },
+    { icon: '🚨', title: '24/7 Monitoring', desc: 'Round-the-clock surveillance with rapid incident response and automated playbooks.' },
+    { icon: '📋', title: 'Compliance Support', desc: 'Built-in support for ISO 27001, NIST, GDPR, and industry-specific regulations.' },
+    { icon: '📈', title: 'Reporting & Insights', desc: 'Dashboards, compliance reports, and incident summaries with continuous optimization.' }
+  ];
+
+  const vsocFeatures = [
+    { icon: '🚙', title: 'Fleet Monitoring', desc: 'Continuous surveillance of vehicle telemetry, backend infrastructure, and connected services.' },
+    { icon: '🔐', title: 'OTA Security', desc: 'Over-the-Air patch validation ensuring firmware integrity and secure software updates.' },
+    { icon: '📡', title: 'CAN Bus Analytics', desc: 'Anomaly detection on Controller Area Network to identify potential ECU attacks.' },
+    { icon: '🌐', title: 'Threat Intelligence', desc: 'Automotive-specific intelligence with Auto-ISAC feeds and global threat data integration.' },
+    { icon: '✅', title: 'Regulatory Compliance', desc: 'Full alignment with UNECE WP.29 R155/R156 and ISO/SAE 21434 requirements.' },
+    { icon: '🤝', title: 'OEM Collaboration', desc: 'Joint workflows, escalation management, and knowledge transfer with engineering teams.' }
+  ];
+
+  const socTiers = [
+    {
+      name: 'Security Essentials',
+      subtitle: 'For MSMEs & Startups',
+      focus: 'MXDR Only',
+      features: ['Endpoint Protection', 'Identity Monitoring', 'Cloud App Security', '24/7 SOC Monitoring', 'Basic Compliance Reports', 'Rapid Onboarding'],
+      ideal: 'Small to mid-sized organisations with lean IT environments'
+    },
+    {
+      name: 'Security Core',
+      subtitle: 'For Enterprises',
+      focus: 'MXDR + Managed SIEM',
+      features: ['Full-Stack Coverage', 'Advanced Log Correlation', 'Custom Detection Rules', 'Co-Managed Options', 'Advanced Compliance', 'Dedicated Support'],
+      ideal: 'Large enterprises with complex IT environments and regulatory needs'
+    }
+  ];
+
+  return (
+    <div className="pt-20">
+      {/* Hero */}
+      <section className={`py-20 px-6 text-center bg-gradient-to-b ${isDark ? 'from-[#141414] to-[#0D0D0D]' : 'from-gray-100 to-white'}`}>
+        <span className="inline-block px-4 py-1.5 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs text-orange-500 uppercase tracking-widest mb-4">Services</span>
+        <h1 className={`text-5xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Cyber Defense <ShinyText>Centre</ShinyText></h1>
+        <p className={`text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'} max-w-3xl mx-auto`}>Comprehensive Security Operations Centre services for enterprise IT and connected vehicle ecosystems.</p>
+      </section>
+
+      {/* SOC Section */}
+      <section className={`py-24 px-6 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'}`}>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-3xl">🛡️</div>
+            <div>
+              <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Security Operations Centre</h2>
+              <p className="text-orange-500">SOC as a Service</p>
+            </div>
+          </div>
+          
+          <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-lg mb-12 max-w-4xl`}>
+            Goismo's SOC provides organisations with comprehensive, scalable, and proactive cybersecurity—delivering real-time threat detection, incident response, and security intelligence across all environments through MXDR and Managed SIEM powered by Microsoft's native security stack.
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {socFeatures.map((f, i) => {
+              const [ref, isVisible] = useScrollReveal(0.1);
+              return (
+                <GlassCard key={i} className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  <div ref={ref}>
+                    <div className="text-3xl mb-4">{f.icon}</div>
+                    <h4 className={`text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{f.title}</h4>
+                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{f.desc}</p>
+                  </div>
+                </GlassCard>
+              );
+            })}
+          </div>
+
+          {/* Service Tiers */}
+          <h3 className={`text-2xl font-bold mb-8 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}>Service Tiers</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            {socTiers.map((tier, i) => (
+              <GlassCard key={i} className={`relative overflow-hidden ${i === 1 ? 'border-orange-500/50' : ''}`}>
+                {i === 1 && <div className="absolute top-0 right-0 px-3 py-1 bg-orange-500 text-white text-xs font-semibold rounded-bl-lg">Popular</div>}
+                <h4 className={`text-xl font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>{tier.name}</h4>
+                <p className="text-orange-500 text-sm mb-2">{tier.subtitle}</p>
+                <div className={`inline-block px-3 py-1 ${isDark ? 'bg-white/[0.05]' : 'bg-black/[0.05]'} rounded-lg text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{tier.focus}</div>
+                <ul className="space-y-2 mb-6">
+                  {tier.features.map((f, j) => (
+                    <li key={j} className={`flex items-center gap-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      <span className="text-orange-500">✓</span>{f}
+                    </li>
+                  ))}
+                </ul>
+                <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-500'} border-t ${isDark ? 'border-white/[0.08]' : 'border-black/[0.08]'} pt-4`}>
+                  <strong>Ideal for:</strong> {tier.ideal}
+                </p>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VSOC Section */}
+      <section className={`py-24 px-6 ${isDark ? 'bg-[#141414]' : 'bg-gray-50'}`}>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-3xl">🚗</div>
+            <div>
+              <h2 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Vehicle Security Operations Centre</h2>
+              <p className="text-blue-500">VSOC as a Service for Automotive OEMs</p>
+            </div>
+          </div>
+          
+          <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-lg mb-12 max-w-4xl`}>
+            Designed for scalability, adaptability, and precision—our VSOC provides OEMs with real-time fleet monitoring, AI-driven threat detection, compliance readiness, and expert security response for connected vehicle ecosystems.
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {vsocFeatures.map((f, i) => {
+              const [ref, isVisible] = useScrollReveal(0.1);
+              return (
+                <GlassCard key={i} className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                  <div ref={ref}>
+                    <div className="text-3xl mb-4">{f.icon}</div>
+                    <h4 className={`text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{f.title}</h4>
+                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{f.desc}</p>
+                  </div>
+                </GlassCard>
+              );
+            })}
+          </div>
+
+          {/* VSOC Highlights */}
+          <div className={`p-8 rounded-2xl ${isDark ? 'bg-white/[0.03] border-white/[0.08]' : 'bg-black/[0.03] border-black/[0.08]'} border`}>
+            <h4 className={`text-xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Frameworks & Standards</h4>
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { name: 'ISO/SAE 21434', desc: 'Automotive cybersecurity engineering' },
+                { name: 'UNECE R155', desc: 'Cybersecurity management systems' },
+                { name: 'MITRE ATT&CK', desc: 'Automotive threat mapping' },
+                { name: 'NIST CSF', desc: 'Risk management framework' }
+              ].map((fw, i) => (
+                <div key={i} className="text-center">
+                  <div className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{fw.name}</div>
+                  <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{fw.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SLA Section */}
+      <section className={`py-24 px-6 ${isDark ? 'bg-[#0D0D0D]' : 'bg-white'}`}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h3 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Service Level Agreements</h3>
+            <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Response times based on incident severity</p>
+          </div>
+          
+          <div className="overflow-x-auto">
+            <table className={`w-full ${isDark ? 'bg-white/[0.03]' : 'bg-black/[0.03]'} rounded-2xl overflow-hidden`}>
+              <thead>
+                <tr className="bg-orange-500/10">
+                  <th className="px-6 py-4 text-left text-xs uppercase tracking-wider text-orange-500">Severity</th>
+                  <th className="px-6 py-4 text-left text-xs uppercase tracking-wider text-orange-500">Description</th>
+                  <th className="px-6 py-4 text-left text-xs uppercase tracking-wider text-orange-500">Initial Response</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { level: 'Critical (P1)', desc: 'Active breach with high operational impact', time: '15 minutes' },
+                  { level: 'High (P2)', desc: 'Confirmed attack with potential data access', time: '1 hour' },
+                  { level: 'Medium (P3)', desc: 'Suspicious activity requiring attention', time: '4 hours' },
+                  { level: 'Low (P4)', desc: 'Minor incident with minimal impact', time: '1 business day' },
+                  { level: 'Informational (P5)', desc: 'No immediate impact, informational', time: '2-3 business days' }
+                ].map((row, i) => (
+                  <tr key={i} className={`border-t ${isDark ? 'border-white/[0.08]' : 'border-black/[0.08]'}`}>
+                    <td className="px-6 py-4">
+                      <span className={`px-3 py-1 rounded-md text-xs font-medium ${
+                        i === 0 ? 'bg-red-500/20 text-red-400' :
+                        i === 1 ? 'bg-orange-500/20 text-orange-400' :
+                        i === 2 ? 'bg-yellow-500/20 text-yellow-400' :
+                        'bg-green-500/20 text-green-400'
+                      }`}>{row.level}</span>
+                    </td>
+                    <td className={`px-6 py-4 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{row.desc}</td>
+                    <td className={`px-6 py-4 text-sm font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>{row.time}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -664,9 +955,9 @@ const Footer = ({ setCurrentPage }) => {
           </div>
 
           {[
-            { title: 'Company', links: [{ label: 'About Us', id: 'about' }, { label: 'Team', id: 'team' }, { label: 'Careers', id: 'careers' }] },
-            { title: 'Services', links: [{ label: 'Portfolio', id: 'portfolio' }, { label: 'Products', id: 'products' }] },
-            { title: 'Connect', links: [{ label: 'Contact', id: 'contact' }] }
+            { title: 'Company', links: [{ label: 'Team', id: 'team' }, { label: 'Careers', id: 'careers' }, { label: 'Contact', id: 'contact' }] },
+            { title: 'Services', links: [{ label: 'SOC Services', id: 'services' }, { label: 'Products', id: 'products' }, { label: 'Portfolio', id: 'portfolio' }] },
+            { title: 'Connect', links: [{ label: 'Get in Touch', id: 'contact' }] }
           ].map((col, i) => (
             <div key={i}>
               <h4 className={`font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{col.title}</h4>
@@ -707,7 +998,7 @@ export default function GoismoWebsite() {
 
   const renderPage = () => {
     switch(currentPage) {
-      case 'about': return <AboutPage />;
+      case 'services': return <ServicesPage />;
       case 'portfolio': return <PortfolioPage />;
       case 'products': return <ProductsPage />;
       case 'team': return <TeamPage />;
@@ -716,7 +1007,10 @@ export default function GoismoWebsite() {
       default: return (
         <>
           <HeroSection setCurrentPage={setCurrentPage} />
+          <TrustIndicators />
           <PillarsSection />
+          <ServicesPreview setCurrentPage={setCurrentPage} />
+          <AboutSection />
           <section className={`py-24 ${isDark ? 'bg-[#141414]' : 'bg-gray-50'}`}>
             <div className="max-w-6xl mx-auto px-6">
               <GlassCard className={`text-center p-16 bg-gradient-to-r ${isDark ? 'from-orange-500/10 to-blue-500/5' : 'from-orange-500/20 to-blue-500/10'}`} hover={false}>
@@ -724,7 +1018,7 @@ export default function GoismoWebsite() {
                 <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-lg mb-8`}>Let's discuss how Goismo can architect your digital future.</p>
                 <div className="flex gap-4 justify-center flex-wrap">
                   <button onClick={() => setCurrentPage('contact')} className="px-7 py-4 rounded-xl font-semibold bg-gradient-to-r from-orange-500 to-orange-400 text-white shadow-lg shadow-orange-500/40 hover:-translate-y-0.5 transition-all">Start a Conversation</button>
-                  <button onClick={() => setCurrentPage('portfolio')} className={`px-7 py-4 rounded-xl font-semibold ${isDark ? 'bg-white/[0.03] border-white/[0.08]' : 'bg-black/[0.03] border-black/[0.08]'} border hover:border-orange-500 transition-all`}>View Our Work</button>
+                  <button onClick={() => setCurrentPage('services')} className={`px-7 py-4 rounded-xl font-semibold ${isDark ? 'bg-white/[0.03] border-white/[0.08]' : 'bg-black/[0.03] border-black/[0.08]'} border hover:border-orange-500 transition-all`}>Explore Services</button>
                 </div>
               </GlassCard>
             </div>
