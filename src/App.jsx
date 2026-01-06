@@ -52,6 +52,22 @@ const ShinyText = ({ children, className = '' }) => (
   </span>
 );
 
+// Mobile-friendly gradient text with shine effect
+const GradientShinyText = ({ children, isDark }) => (
+  <span className="relative inline-block overflow-hidden">
+    <span 
+      className={`relative z-10 bg-gradient-to-r ${isDark ? 'from-white via-orange-500 to-blue-500' : 'from-gray-900 via-orange-500 to-blue-500'} bg-clip-text`}
+      style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+    >
+      {children}
+    </span>
+    <span 
+      className="absolute top-0 left-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine pointer-events-none z-20" 
+      style={{ transform: 'translateX(-100%)' }}
+    ></span>
+  </span>
+);
+
 const GlassCard = ({ children, className = '', hover = true }) => {
   const { isDark } = useTheme();
   return (
@@ -165,8 +181,8 @@ const HeroSection = ({ setCurrentPage }) => {
         
         <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
           <span className={`block animate-fadeInUp ${isDark ? 'text-white' : 'text-gray-900'}`}>Building the</span>
-          <span className={`block bg-gradient-to-r ${isDark ? 'from-white via-orange-500 to-blue-500' : 'from-gray-900 via-orange-500 to-blue-500'} bg-clip-text text-transparent animate-fadeInUp`} style={{animationDelay: '0.2s'}}>
-            <ShinyText>Future of Software</ShinyText>
+          <span className="block animate-fadeInUp" style={{animationDelay: '0.2s'}}>
+            <GradientShinyText isDark={isDark}>Future of Software</GradientShinyText>
           </span>
         </h1>
         
