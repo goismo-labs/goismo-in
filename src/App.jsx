@@ -751,14 +751,14 @@ const ProductsPage = () => {
 const TeamPage = () => {
   const { isDark } = useTheme();
   const team = [
-    { name: 'Rajesh Kumar', role: 'Founder & CEO', loc: 'Bangalore', avatar: 'RK' },
-    { name: 'Anna Lindqvist', role: 'CTO', loc: 'Göteborg', avatar: 'AL' },
-    { name: 'Michael Chen', role: 'VP Engineering', loc: 'Oakland', avatar: 'MC' },
-    { name: 'Priya Sharma', role: 'Head of Security', loc: 'Bangalore', avatar: 'PS' },
-    { name: 'Erik Johansson', role: 'Lead Designer', loc: 'Göteborg', avatar: 'EJ' },
-    { name: 'Sarah Williams', role: 'Product Manager', loc: 'Oakland', avatar: 'SW' },
-    { name: 'Amit Patel', role: 'DevOps Lead', loc: 'Bangalore', avatar: 'AP' },
-    { name: 'Lisa Andersson', role: 'QA Director', loc: 'Göteborg', avatar: 'LA' }
+    { name: 'Deepanshu Arya', role: 'Chief Experience Architect', loc: 'Bangalore', avatar: 'DA' },
+    { name: 'Shiv Dubey', role: 'Director of Product Vision', loc: 'Bangalore', avatar: 'SD' },
+    { name: 'Ravikiran Talekar', role: 'VP of Strategic Growth', loc: 'Bangalore', avatar: 'RT' },
+    { name: 'Dinesh Kokare', role: 'Lead Mobile Innovations Architect', loc: 'Bangalore', avatar: 'DK' },
+    { name: 'Rohit Sharma', role: 'Principal Frontend Engineer', loc: 'Bangalore', avatar: 'RS' },
+    { name: 'Ram Gopal Shukla', role: 'Cloud Infrastructure Maestro', loc: 'Bangalore', avatar: 'RG' },
+    { name: 'Shariq', role: 'Backend Systems Architect', loc: 'Bangalore', avatar: 'SQ' },
+    { name: 'Shivam Dahiya', role: 'Director of People & Culture', loc: 'Bangalore', avatar: 'SD' }
   ];
 
   return (
